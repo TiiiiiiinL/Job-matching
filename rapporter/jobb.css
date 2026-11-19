@@ -1,0 +1,54 @@
+/* Gemensam stil för alla rapporter. Ändras här → gäller alla rapporter. */
+:root { --bg:#f7f7f5; --kort:#fff; --text:#1c1c1c; --dämpad:#6b6b6b; --linje:#e4e4e0; --fem:#1f7a4d; --fyra:#3a6ea5; --öppen:#1f7a4d; --snart:#a86b00; --stänger:#b3261e; --ny:#7a3fb3; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#141414; --kort:#1e1e1e; --text:#ececec; --dämpad:#9a9a9a; --linje:#2c2c2c; --fem:#4cc38a; --fyra:#7aa7e0; --öppen:#4cc38a; --snart:#e0a440; --stänger:#f2847b; --ny:#c19bf0; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font:16px/1.5 system-ui, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:32px 16px 64px; }
+h1 { margin:0 0 4px; font-size:28px; }
+.meta { color:var(--dämpad); margin:0 0 16px; }
+
+/* Verktygsrad: uppdatera-knapp, status, äldre rapporter */
+.verktyg { display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; margin:0 0 20px; }
+.verktyg button, .verktyg select, .knappar button { font:inherit; font-size:14px; color:var(--text); background:var(--kort); border:1px solid var(--linje); border-radius:8px; padding:6px 12px; cursor:pointer; }
+#uppdatera { background:var(--text); color:var(--bg); border-color:var(--text); font-weight:600; }
+#uppdatera:disabled { opacity:.55; cursor:default; }
+#status { color:var(--dämpad); font-size:14px; flex:1 1 220px; min-width:0; overflow-wrap:anywhere; }
+#status.fel { color:var(--stänger); }
+.verktyg label { font-size:14px; color:var(--dämpad); display:flex; align-items:center; gap:6px; }
+
+/* Flikar */
+.flikar { display:flex; gap:4px; border-bottom:1px solid var(--linje); margin-bottom:20px; overflow-x:auto; }
+.flikar button { font:inherit; font-size:15px; background:none; border:0; color:var(--dämpad); padding:10px 14px; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; white-space:nowrap; }
+.flikar button[aria-selected="true"] { color:var(--text); border-bottom-color:var(--text); font-weight:600; }
+.flikar .antal { font-size:12px; background:var(--linje); border-radius:99px; padding:1px 7px; margin-left:4px; }
+.flik[hidden] { display:none; }
+
+h2 { font-size:15px; text-transform:uppercase; letter-spacing:.04em; color:var(--dämpad); margin:28px 0 10px; }
+.jobb { background:var(--kort); border:1px solid var(--linje); border-radius:10px; padding:16px; margin-bottom:12px; }
+.jobb[hidden] { display:none; }
+.topp { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
+.jobb h3 { margin:0; font-size:17px; }
+.betyg { flex:none; font-size:13px; font-weight:600; color:#fff; border-radius:99px; padding:2px 10px; background:var(--fyra); }
+.jobb[data-betyg="5"] .betyg { background:var(--fem); }
+.ny { display:inline-block; vertical-align:2px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--ny); border:1px solid currentColor; border-radius:4px; padding:0 5px; margin-right:6px; }
+.rad { color:var(--dämpad); font-size:14px; margin:4px 0 4px; }
+.ansokan { font-size:14px; font-weight:600; margin:0 0 8px; }
+.jobb[data-status="öppen"] .ansokan { color:var(--öppen); }
+.jobb[data-status="snart"] .ansokan { color:var(--snart); }
+.jobb[data-status="stänger"] .ansokan { color:var(--stänger); }
+.jobb[data-status="ingen"] .ansokan { color:var(--dämpad); font-weight:400; }
+.varför { margin:0 0 8px; }
+a { color:var(--fyra); }
+.tomt { color:var(--dämpad); font-style:italic; }
+
+/* Sökt / dölj per jobb */
+.fot { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:8px; }
+.knappar { display:flex; gap:6px; }
+.knappar button { font-size:13px; padding:3px 10px; color:var(--dämpad); }
+.jobb.sökt { border-color:var(--öppen); }
+.jobb.sökt .knappar .sökt-knapp { color:var(--öppen); border-color:var(--öppen); font-weight:600; }
+.jobb.dold { opacity:.5; }
+.jobb.utgången { opacity:.5; }
+.jobb[data-betyg="3"] .betyg { background:var(--dämpad); }

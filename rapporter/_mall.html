@@ -1,0 +1,56 @@
+<!doctype html>
+<!-- Mall för /jobb. Kopieras till rapporter/<datum>.html och fylls i.
+     Stil och beteende ligger i jobb.css / jobb.js (gemensamt för alla rapporter).
+     Fyra flikar (Sverige, Timjobb, Utomlands, Obetalt) — varje flik är en <section class="flik">.
+     Ett <article class="jobb"> per jobb:
+       data-betyg     4 | 5             färg på betyg-pillret
+       data-status    öppen | snart | stänger | ingen
+       data-deadline  ÅÅÅÅ-MM-DD        sista ansökningsdag om den är känd → "X dagar kvar"
+                                         räknas ut automatiskt, stängda jobb göms
+       data-ny        (utan värde)       jobbet är nytt sedan förra rapporten → "Ny"-märke
+     Knapparna "Markera som sökt" / "Dölj" läggs till av jobb.js. -->
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jobbrapport DATUM</title>
+<link rel="stylesheet" href="jobb.css">
+</head>
+<body>
+<main>
+  <h1>Jobbrapport</h1>
+  <p class="meta">DATUM · X annonser genomgångna · Y kom med (Z nya)</p>
+
+  <div class="verktyg">
+    <button id="uppdatera">Uppdatera nu</button>
+    <span id="status" aria-live="polite"></span>
+    <select id="arkiv" aria-label="Visa en äldre rapport"></select>
+    <label><input type="checkbox" id="visa-dolda"> <span id="visa-dolda-text">Visa dolda</span></label>
+  </div>
+
+  <nav class="flikar" role="tablist">
+    <button role="tab" aria-selected="true" data-flik="sverige">Sverige<span class="antal">0</span></button>
+    <button role="tab" aria-selected="false" data-flik="timjobb">Timjobb<span class="antal">0</span></button>
+    <button role="tab" aria-selected="false" data-flik="utomlands">Utomlands<span class="antal">0</span></button>
+    <button role="tab" aria-selected="false" data-flik="obetalt">Obetalt<span class="antal">0</span></button>
+  </nav>
+
+  <section class="flik" id="sverige">
+    <h2>Sök nu</h2>
+    <article class="jobb" data-betyg="5" data-status="öppen" data-deadline="ÅÅÅÅ-MM-DD" data-ny>
+      <div class="topp"><h3>TITEL — FÖRETAG</h3><span class="betyg">5/5</span></div>
+      <p class="rad">ORT · OMFATTNING</p>
+      <p class="ansokan">Ansökan: ÖPPNAR – STÄNGER</p>
+      <p class="varför">Varför det passar dig.</p>
+      <a href="LÄNK" target="_blank" rel="noopener">Till annonsen →</a>
+    </article>
+    <h2>Öppnar snart</h2>
+  </section>
+
+  <section class="flik" id="timjobb" hidden></section>
+  <section class="flik" id="utomlands" hidden></section>
+  <section class="flik" id="obetalt" hidden></section>
+</main>
+<script src="jobb.js"></script>
+</body>
+</html>

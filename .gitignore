@@ -1,0 +1,12 @@
+# CV och sökresultat är personliga — ska aldrig hamna på GitHub
+cv/*
+!cv/README.md
+data/raw.json
+data/lista.txt
+data/uppdatering.log
+
+# Personligt: profil, genererade rapporter, sedda annonser
+profil.md
+rapporter/20*.html
+data/seen.json
+__pycache__/
